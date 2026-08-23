@@ -1,0 +1,308 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Soft Radial Background Glow -->
+    <radialGradient id="heroGlow" cx="45%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8F8F5" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#F0FDF4" stop-opacity="0.5"/>
+      <stop offset="85%" stop-color="#F8FAFC" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="orbGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16A085" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2563EB" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Character Clothing Gradients (Modern 2026 SaaS Look) -->
+    <linearGradient id="sweaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="30%" stop-color="#16A085"/>
+      <stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+
+    <linearGradient id="pantsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="70%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <linearGradient id="skinToneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="60%" stop-color="#FDBA74"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D3748"/>
+      <stop offset="50%" stop-color="#1A202C"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <!-- Modern Laptop Gradients -->
+    <linearGradient id="laptopBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+
+    <linearGradient id="laptopScreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#16A085"/>
+    </linearGradient>
+
+    <!-- Wheelchair Gradients (Sleek Matte Titanium) -->
+    <linearGradient id="wheelRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <linearGradient id="handRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <!-- Micro-UI Glass Shadows -->
+    <filter id="softUiShadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#16A085" flood-opacity="0.06"/>
+    </filter>
+
+    <filter id="glowCircle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+    </filter>
+  </defs>
+
+  <!-- 1. AMBIENT EDITORIAL BACKDROP & DEPTH GLOW -->
+  <circle cx="370" cy="310" r="280" fill="url(#heroGlow)"/>
+  <ellipse cx="440" cy="220" r="140" fill="url(#orbGlow)"/>
+  
+  <!-- Subtle Abstract Geometric Curved Accent Lines -->
+  <path d="M180 340 C220 220 340 160 480 180" stroke="#16A085" stroke-width="2.5" stroke-dasharray="4 6" stroke-opacity="0.3" fill="none"/>
+  <path d="M260 460 C380 480 520 420 580 320" stroke="#2563EB" stroke-width="2" stroke-dasharray="3 5" stroke-opacity="0.25" fill="none"/>
+
+  <!-- Soft Ambient Ground Shadow -->
+  <ellipse cx="375" cy="545" rx="190" ry="16" fill="#64748B" opacity="0.12"/>
+  <ellipse cx="365" cy="545" rx="130" ry="9" fill="#1E293B" opacity="0.18"/>
+
+  <!-- 2. WHEELCHAIR: FAR WHEEL & BACKGROUND STRUCTURE -->
+  <g id="wheelchair-far">
+    <!-- Left Background Wheel (In Perspective) -->
+    <ellipse cx="300" cy="435" rx="28" ry="85" stroke="#475569" stroke-width="6" fill="none" opacity="0.75"/>
+    <ellipse cx="300" cy="435" rx="22" ry="72" stroke="#64748B" stroke-width="2" fill="none" opacity="0.5"/>
+    <line x1="300" y1="350" x2="300" y2="520" stroke="#94A3B8" stroke-width="1.2" opacity="0.6"/>
+    <line x1="272" y1="435" x2="328" y2="435" stroke="#94A3B8" stroke-width="1.2" opacity="0.6"/>
+  </g>
+
+  <!-- 3. WHEELCHAIR: ERGONOMIC CHASSIS & BACKREST -->
+  <g id="wheelchair-chassis">
+    <!-- Titanium Minimal Backrest Frame -->
+    <path d="M455 265 L460 380 L380 395" stroke="#1E293B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Slim Ergonomic Lumbar Backrest -->
+    <rect x="444" y="270" width="18" height="95" rx="6" fill="#0F172A"/>
+    
+    <!-- Minimalist Armrest -->
+    <path d="M455 330 L360 330" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
+    <rect x="360" y="324" width="75" height="8" rx="4" fill="#334155"/>
+
+    <!-- Main Chassis Diagonal Tube -->
+    <path d="M450 380 L380 480 L300 495" stroke="#1E293B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 4. CHARACTER: CONFIDENT YOUNG PROFESSIONAL IN 3/4 WORKING POSTURE -->
+  <g id="character-person">
+    
+    <!-- Hair Volume Back -->
+    <path d="M375 110 C335 110 320 155 320 205 C320 250 345 275 375 275 C435 275 448 200 448 145 C448 115 410 110 375 110 Z" fill="url(#hairGrad)"/>
+
+    <!-- LEGS & PANTS (Comfortable Seated Posture, Tailored Dark Trousers) -->
+    <!-- Far Leg -->
+    <path d="M405 375 L360 375 L320 485 L260 500 L260 520 L335 505 L375 395 Z" fill="#1E293B"/>
+    <!-- Near Leg -->
+    <path d="M435 380 L385 380 L340 495 L275 515 L275 536 L355 518 L415 405 Z" fill="url(#pantsGrad)"/>
+    
+    <!-- Tailored Pant Creases & Highlights -->
+    <path d="M375 380 Q348 395 340 495" stroke="#0F172A" stroke-width="2.5" fill="none" opacity="0.7"/>
+    <path d="M355 445 Q375 455 352 478" stroke="#475569" stroke-width="1.8" fill="none" opacity="0.5"/>
+
+    <!-- MODERN SNEAKERS (Clean White & Slate) -->
+    <!-- Far Shoe -->
+    <path d="M260 500 L228 522 Q220 532 238 536 L285 526 L285 510 Z" fill="#E2E8F0"/>
+    <!-- Near Shoe -->
+    <path d="M275 515 L235 538 Q222 548 248 554 L305 540 L298 524 Z" fill="#FFFFFF" filter="url(#softUiShadow)"/>
+    <path d="M235 538 L248 554 L305 540" stroke="#CBD5E1" stroke-width="2" fill="none"/>
+    <!-- Teal Accent on Sneaker -->
+    <path d="M255 532 Q265 528 275 534" stroke="#16A085" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- EMERALD TEAL KNIT SWEATER / TOP (Human-centered, professional) -->
+    <path d="M448 235 C448 215 425 200 385 200 C345 200 330 220 330 275 C330 335 355 385 405 385 C440 385 455 330 455 265 Z" fill="url(#sweaterGrad)"/>
+    <!-- Subtle Sweater Form & Shadow Curves -->
+    <path d="M390 245 Q375 295 395 345" stroke="#0F766E" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M352 285 Q372 320 365 365" stroke="#0F766E" stroke-width="2" fill="none" opacity="0.5"/>
+
+    <!-- NECK & COLLAR -->
+    <path d="M385 180 L368 210 L402 210 Z" fill="url(#skinToneGrad)"/>
+    <path d="M365 205 Q385 220 405 205 Q410 212 402 218 Q385 230 368 215 Z" fill="#0D5F57"/>
+
+    <!-- CONFIDENT & NATURAL FACE (Looking forward-down at screen, warm smile) -->
+    <g transform="translate(345, 110)">
+      <!-- Face Base Structure -->
+      <path d="M22 35 C18 68 38 92 60 92 C80 92 90 68 90 35 C90 10 70 0 50 0 C30 0 22 15 22 35 Z" fill="url(#skinToneGrad)"/>
+      
+      <!-- Delicate Ear -->
+      <circle cx="84" cy="48" r="7.5" fill="#FDBA74"/>
+      <path d="M84 44 Q86 48 83 52" stroke="#EA580C" stroke-width="1.2" fill="none"/>
+
+      <!-- Focused, Intelligent Eyes (Natural gaze towards laptop display) -->
+      <ellipse cx="40" cy="46" rx="4.5" ry="3" fill="#FFFFFF"/>
+      <ellipse cx="64" cy="46" rx="4.5" ry="3" fill="#FFFFFF"/>
+      
+      <circle cx="41" cy="46" r="2.4" fill="#0F172A"/>
+      <circle cx="65" cy="46" r="2.4" fill="#0F172A"/>
+      <circle cx="42" cy="45" r="0.9" fill="#FFFFFF"/>
+      <circle cx="66" cy="45" r="0.9" fill="#FFFFFF"/>
+
+      <!-- Natural Eyelash Definition -->
+      <path d="M35 44 Q41 41 47 44" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <path d="M59 44 Q65 41 71 44" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+      <!-- Professional Confident Eyebrows -->
+      <path d="M33 37 Q41 33 49 37" stroke="#1E242B" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <path d="M57 37 Q65 33 73 37" stroke="#1E242B" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+
+      <!-- Refined Nose -->
+      <path d="M53 45 L49 57 L57 57" stroke="#EA580C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+      <!-- Genuine, Optimistic Warm Smile -->
+      <path d="M43 66 Q53 77 64 66" stroke="#BE123C" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      <path d="M45 67 Q53 72 62 67" stroke="#FDA4AF" stroke-width="1.5" fill="none"/>
+      
+      <!-- Subtle Healthy Glow on Cheeks -->
+      <ellipse cx="36" cy="56" rx="6" ry="3.5" fill="#FB7185" opacity="0.35"/>
+      <ellipse cx="70" cy="56" rx="6" ry="3.5" fill="#FB7185" opacity="0.35"/>
+
+      <!-- Modern Flowing Dark Hair with Highlights -->
+      <path d="M20 35 C16 15 35 0 55 0 C75 0 90 15 90 35 C90 52 84 62 86 78 C78 72 76 56 76 40 C65 24 45 24 32 35 C28 46 30 68 24 78 C20 62 18 52 20 35 Z" fill="url(#hairGrad)"/>
+      <path d="M42 8 Q56 3 72 12" stroke="#475569" stroke-width="2.2" fill="none"/>
+      <path d="M28 25 Q38 14 52 12" stroke="#475569" stroke-width="2.2" fill="none"/>
+    </g>
+
+    <!-- 5. ULTRA-SLIM MODERN LAPTOP (3/4 Perspective Active Workstation) -->
+    <!-- Base Keyboard Chassis -->
+    <polygon points="275,335 390,335 418,358 250,358" fill="url(#laptopBody)" filter="url(#softUiShadow)"/>
+    <polygon points="278,337 387,337 412,354 255,354" fill="#0F172A"/>
+    <!-- Glass Trackpad -->
+    <rect x="320" y="345" width="28" height="7" rx="1.5" fill="#334155"/>
+    
+    <!-- Ultra-Thin Screen Display (Angled at natural ergonomics) -->
+    <polygon points="275,335 300,235 398,235 390,335" fill="url(#laptopScreen)"/>
+    <!-- Display Screen Glowing Glass (Showing live career IDE / workspace) -->
+    <polygon points="279,332 302,238 394,238 386,332" fill="url(#screenGlow)" opacity="0.95"/>
+    <!-- Code/UI Lines on Screen -->
+    <line x1="310" y1="255" x2="365" y2="255" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+    <line x1="310" y1="265" x2="350" y2="265" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <line x1="310" y1="275" x2="380" y2="275" stroke="#A7F3D0" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+    <circle cx="375" cy="305" r="4" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- 6. ARMS & HANDS (Natural, Confident Typing Interaction) -->
+    <!-- Right/Far Arm -->
+    <path d="M410 238 C395 280 358 322 328 340 L345 350 C378 328 412 285 428 248 Z" fill="url(#sweaterGrad)"/>
+    <!-- Left/Near Arm -->
+    <path d="M352 238 C338 285 330 328 305 344 L325 354 C350 332 362 285 378 245 Z" fill="url(#sweaterGrad)"/>
+    
+    <!-- Expressive, Anatomically Correct Typing Hands -->
+    <path d="M305 340 Q320 350 336 343" stroke="#FED7AA" stroke-width="8" stroke-linecap="round"/>
+    <path d="M328 342 Q344 352 358 344" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+
+  </g>
+
+  <!-- 7. WHEELCHAIR: NEAR MAIN WHEEL & SLENDER DETAIL (Foreground Focus) -->
+  <g id="wheelchair-main-wheel">
+    
+    <!-- Minimal Matte Footplate -->
+    <path d="M315 485 L250 535 L305 535 L338 495" stroke="#1E293B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="245" y="530" width="65" height="6" rx="2" fill="#0F172A"/>
+
+    <!-- Front Swivel Caster Wheel Assembly -->
+    <path d="M350 465 L350 528" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="350" cy="536" r="16" fill="#0F172A"/>
+    <circle cx="350" cy="536" r="9" fill="#475569"/>
+    <circle cx="350" cy="536" r="3.5" fill="#CBD5E1"/>
+
+    <!-- Prominent Main Rear Wheel in 3/4 Perspective -->
+    <!-- High-Grip Low Profile Tire -->
+    <ellipse cx="450" cy="455" rx="58" ry="100" stroke="url(#wheelRim)" stroke-width="11" fill="none"/>
+    <!-- Ergonomic Silver Push-Rim -->
+    <ellipse cx="450" cy="455" rx="49" ry="85" stroke="url(#handRimGrad)" stroke-width="4.5" fill="none"/>
+    
+    <!-- Precision Central Hub -->
+    <ellipse cx="450" cy="455" rx="15" ry="20" fill="#0F172A"/>
+    <ellipse cx="450" cy="455" rx="8" ry="10" fill="#94A3B8"/>
+
+    <!-- Radial Silver Spokes (Fine & High-End) -->
+    <line x1="450" y1="455" x2="450" y2="355" stroke="#CBD5E1" stroke-width="1.8" opacity="0.9"/>
+    <line x1="450" y1="455" x2="450" y2="555" stroke="#CBD5E1" stroke-width="1.8" opacity="0.9"/>
+    <line x1="450" y1="455" x2="392" y2="455" stroke="#CBD5E1" stroke-width="1.8" opacity="0.9"/>
+    <line x1="450" y1="455" x2="508" y2="455" stroke="#CBD5E1" stroke-width="1.8" opacity="0.9"/>
+    
+    <line x1="450" y1="455" x2="408" y2="385" stroke="#CBD5E1" stroke-width="1.6" opacity="0.8"/>
+    <line x1="450" y1="455" x2="492" y2="525" stroke="#CBD5E1" stroke-width="1.6" opacity="0.8"/>
+    <line x1="450" y1="455" x2="408" y2="525" stroke="#CBD5E1" stroke-width="1.6" opacity="0.8"/>
+    <line x1="450" y1="455" x2="492" y2="385" stroke="#CBD5E1" stroke-width="1.6" opacity="0.8"/>
+
+    <line x1="450" y1="455" x2="428" y2="362" stroke="#94A3B8" stroke-width="1.2" opacity="0.7"/>
+    <line x1="450" y1="455" x2="472" y2="548" stroke="#94A3B8" stroke-width="1.2" opacity="0.7"/>
+    <line x1="450" y1="455" x2="472" y2="362" stroke="#94A3B8" stroke-width="1.2" opacity="0.7"/>
+    <line x1="450" y1="455" x2="428" y2="548" stroke="#94A3B8" stroke-width="1.2" opacity="0.7"/>
+  </g>
+
+  <!-- 8. SUBTLE 2026 SAAS FLOATING MICRO-UI ELEMENTS (No clunky boxes, natural integration) -->
+
+  <!-- Top-Left Floating Micro-Card: 98% AI Match (Sleek Glassmorphism Pill) -->
+  <g transform="translate(140, 150)" filter="url(#softUiShadow)">
+    <rect width="175" height="46" rx="23" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <circle cx="24" cy="23" r="13" fill="#E8F8F5"/>
+    <!-- Sparkles / Star Icon -->
+    <path d="M24 16 L25.5 21 L30.5 22.5 L25.5 24 L24 29 L22.5 24 L17.5 22.5 L22.5 21 Z" fill="#16A085"/>
+    <text x="45" y="22" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#172033">98% AI Moslik</text>
+    <text x="45" y="34" font-family="Inter, -apple-system, sans-serif" font-size="9.5" font-weight="600" fill="#16A085">Frontend Developer</text>
+  </g>
+
+  <!-- Top-Right Floating Micro-Card: 100% Masofaviy / Remote Work -->
+  <g transform="translate(480, 130)" filter="url(#softUiShadow)">
+    <rect width="180" height="46" rx="23" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <circle cx="24" cy="23" r="13" fill="#EFF6FF"/>
+    <!-- Modern Briefcase Icon -->
+    <rect x="17" y="19" width="14" height="10" rx="2" fill="#2563EB"/>
+    <path d="M21 19 V16.5 Q21 15 22.5 15 H25.5 Q27 15 27 16.5 V19" stroke="#2563EB" stroke-width="1.5" fill="none"/>
+    <text x="45" y="22" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#172033">100% Masofaviy</text>
+    <text x="45" y="34" font-family="Inter, -apple-system, sans-serif" font-size="9.5" font-weight="600" fill="#2563EB">Erkin ish jadvali</text>
+  </g>
+
+  <!-- Bottom-Left Floating Micro-Card: WCAG 2.1 AA Accessibility -->
+  <g transform="translate(100, 390)" filter="url(#softUiShadow)">
+    <rect width="165" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <circle cx="22" cy="21" r="12" fill="#FEF9C3"/>
+    <!-- Accessibility Icon -->
+    <circle cx="22" cy="15" r="2.2" fill="#D97706"/>
+    <path d="M16 19 H28 M22 19 V27 M18 24 L22 21 L26 24" stroke="#D97706" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="42" y="21" font-family="Inter, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#172033">To'siqsiz Muhit</text>
+    <text x="42" y="32" font-family="Inter, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#D97706">NVDA / Screen Reader</text>
+  </g>
+
+  <!-- Bottom-Right Floating Micro-Card: Salary & Security -->
+  <g transform="translate(515, 380)" filter="url(#softUiShadow)">
+    <rect width="155" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <circle cx="22" cy="21" r="12" fill="#E8F8F5"/>
+    <!-- Shield Check Icon -->
+    <path d="M22 13 L28 16 V21 C28 25 22 28 22 28 C22 28 16 25 16 21 V16 Z" fill="#16A085"/>
+    <path d="M19 20.5 L21 22.5 L25 18.5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="42" y="21" font-family="Inter, -apple-system, sans-serif" font-size="10.5" font-weight="700" fill="#172033">Rasmiy Shartnoma</text>
+    <text x="42" y="32" font-family="Inter, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#16A085">1% Soliq Imtiyozi</text>
+  </g>
+
+</svg>

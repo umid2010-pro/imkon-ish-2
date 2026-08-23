@@ -12,6 +12,7 @@ class AppStore {
 
   getDefaultState() {
     return {
+      isDemoMode: true,
       currentUser: {
         id: 'usr-candidate-1',
         fullName: 'Azizbek Saidov',
@@ -128,7 +129,7 @@ Tajriba: 3 yil Frontend dasturlash bo'yicha masofaviy loyihalar, to'siqsiz veb-s
         {
           id: 'ai-career-mentor',
           name: 'AI Karyera Maslahatchisi',
-          company: 'Imkoniyatlar Kengligi AI',
+          company: 'Imkon Ish AI',
           role: 'Sun\'iy Intellekt Hamrohi',
           partnerLang: 'uz',
           avatar: 'AI',
@@ -148,7 +149,7 @@ Tajriba: 3 yil Frontend dasturlash bo'yicha masofaviy loyihalar, to'siqsiz veb-s
         }
       ],
       a11y: {
-        theme: 'default', // default (dark) | light | high-contrast | monochrome
+        theme: 'light', // light | dark | high-contrast | monochrome
         fontScale: 'md', // sm | md | lg | xl
         dyslexiaFont: false,
         largeCursor: false,

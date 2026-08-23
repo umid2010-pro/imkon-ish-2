@@ -1,5 +1,5 @@
 /**
- * "Imkoniyatlar Kengligi" — Senior Accessibility & WCAG 2.1 AA Engine
+ * "Imkon Ish" — Senior Accessibility & WCAG 2.1 AA Engine
  * Real-Time Dynamic Root HTML Font Scaling, Web Speech TTS, Contrast Switchers, Dyslexia Font, Keyboard Traps
  */
 
@@ -41,8 +41,10 @@ class AccessibilityEngine {
   applyInitialSettings() {
     const config = window.Store ? window.Store.getState().a11y : {};
     
-    if (config.theme && config.theme !== 'default') {
+    if (config.theme) {
       this.setTheme(config.theme, false);
+    } else {
+      this.setTheme('light', false);
     }
     if (config.fontScale) {
       this.setFontScale(config.fontScale, false);
@@ -50,14 +52,20 @@ class AccessibilityEngine {
     if (config.dyslexiaFont) {
       document.documentElement.classList.add('dyslexia-font');
       document.body.classList.add('dyslexia-font');
+      const btn = document.getElementById('btn-dyslexia');
+      if (btn) btn.classList.add('active');
     }
     if (config.largeCursor) {
       document.documentElement.classList.add('large-cursor');
       document.body.classList.add('large-cursor');
+      const btn = document.getElementById('btn-large-cursor');
+      if (btn) btn.classList.add('active');
     }
     if (config.reducedMotion) {
       document.documentElement.classList.add('reduced-motion');
       document.body.classList.add('reduced-motion');
+      const btn = document.getElementById('btn-reduced-motion');
+      if (btn) btn.classList.add('active');
     }
   }
 
@@ -74,12 +82,15 @@ class AccessibilityEngine {
 
   setTheme(themeName, announce = true) {
     const root = document.documentElement;
-    root.classList.remove('theme-light', 'theme-high-contrast', 'theme-monochrome');
-    document.body.classList.remove('theme-light', 'theme-high-contrast', 'theme-monochrome');
+    root.classList.remove('theme-light', 'theme-dark', 'theme-high-contrast', 'theme-monochrome');
+    document.body.classList.remove('theme-light', 'theme-dark', 'theme-high-contrast', 'theme-monochrome');
     
     if (themeName === 'light') {
       root.classList.add('theme-light');
       document.body.classList.add('theme-light');
+    } else if (themeName === 'dark') {
+      root.classList.add('theme-dark');
+      document.body.classList.add('theme-dark');
     } else if (themeName === 'high-contrast') {
       root.classList.add('theme-high-contrast');
       document.body.classList.add('theme-high-contrast');
@@ -98,9 +109,10 @@ class AccessibilityEngine {
 
     if (announce) {
       const names = {
-        default: 'Standart qorong\'i rejim',
+        default: 'Yorug\' rejim',
         light: 'Yorug\' rejim',
-        'high-contrast': 'Yuqori kontrastli sariq-qora rejim',
+        dark: 'Tungi (Dark) rejim',
+        'high-contrast': 'Yuqori kontrastli rejim',
         monochrome: 'Monoxrom oq-qora rejim'
       };
       this.announce(`${names[themeName] || themeName} faollashtirildi.`);
@@ -201,7 +213,7 @@ class AccessibilityEngine {
     } else {
       const activeText = document.querySelector('main') ? document.querySelector('main').innerText : document.body.innerText;
       const cleanSnippet = activeText.substring(0, 400).replace(/\s+/g, ' ');
-      this.speakText(cleanSnippet || 'Assalomu alaykum! Imkoniyatlar Kengligi milliy inklyuziv bandlik platformasi.');
+      this.speakText(cleanSnippet || 'Assalomu alaykum! Imkon Ish milliy inklyuziv bandlik platformasi.');
     }
   }
 

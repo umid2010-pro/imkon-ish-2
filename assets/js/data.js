@@ -1,6 +1,6 @@
 /**
- * "Imkoniyatlar Kengligi" — Enterprise Data Architecture
- * Comprehensive database for inclusive vacancies, partners, interview questions, CV samples, and UN SDG impact metrics
+ * "Imkon Ish" — Enterprise Data Architecture
+ * Comprehensive database for inclusive vacancies, verified inclusive employers, candidates, CV samples, and UN SDG impact metrics
  */
 
 window.APP_DATA = {
@@ -17,445 +17,636 @@ window.APP_DATA = {
     accommodatedWorkplacesCount: 940
   },
 
-  // Inclusive Partner Organizations
+  // O'zbekistonning barcha 14 ta hududi + Masofaviy ro'yxati
+  regions: [
+    { value: "all", label: "Barcha hududlar" },
+    { value: "Toshkent shahri", label: "Toshkent shahri" },
+    { value: "Toshkent viloyati", label: "Toshkent viloyati" },
+    { value: "Samarqand", label: "Samarqand" },
+    { value: "Farg'ona", label: "Farg'ona" },
+    { value: "Andijon", label: "Andijon" },
+    { value: "Namangan", label: "Namangan" },
+    { value: "Buxoro", label: "Buxoro" },
+    { value: "Qashqadaryo", label: "Qashqadaryo" },
+    { value: "Surxondaryo", label: "Surxondaryo" },
+    { value: "Xorazm", label: "Xorazm" },
+    { value: "Navoiy", label: "Navoiy" },
+    { value: "Jizzax", label: "Jizzax" },
+    { value: "Sirdaryo", label: "Sirdaryo" },
+    { value: "Qoraqalpog'iston", label: "Qoraqalpog'iston Respublikasi" },
+    { value: "Masofaviy", label: "100% Masofaviy" }
+  ],
+
+  // Inclusive Partner & Employer Companies
   partners: [
-    { name: "IT Park Uzbekistan", type: "Davlat tashkiloti", badge: "A+ Inklyuziv Hub", verified: true },
-    { name: "Uzum Technologies", type: "E-Commerce & FinTech", badge: "100% Masofaviy & Qulay", verified: true },
-    { name: "EPAM Systems", type: "Global IT", badge: "Global WCAG Standarti", verified: true },
-    { name: "BMT Taraqqiyot Dasturi (UNDP)", type: "Xalqaro tashkilot", badge: "SDG 8 & 10 Hamkori", verified: true },
-    { name: "Beeline Uzbekistan", type: "Telekommunikatsiya", badge: "Moslashtirilgan Ish Dasturi", verified: true },
-    { name: "Payme / TBC Bank", type: "Fintech", badge: "Surdotarjimon Xizmati", verified: true },
-    { name: "Mohirdev Platformasi", type: "EdTech", badge: "Bepul IT Ta'lim Grantlari", verified: true },
-    { name: "O'zbekiston Nogironlar Jamiyati", type: "Jamoat tashkiloti", badge: "Bosh Maslahatchi Kengash", verified: true }
+    { 
+      id: "uzauto",
+      name: "UzAuto", 
+      type: "Avtomobilsozlik & Korporatsiya", 
+      logoText: "UA",
+      badge: "A+ Inklyuziv", 
+      verified: true,
+      inclusiveScore: 92,
+      vacanciesCount: 12,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "Nogironligi bor mutaxassislar uchun maxsus texnologik va masofaviy muhandislik dasturlari.",
+      location: "Toshkent / Masofaviy",
+      rating: "4.9"
+    },
+    { 
+      id: "uzum",
+      name: "Uzum Technologies", 
+      type: "E-Commerce & FinTech", 
+      logoText: "UZ",
+      badge: "100% Masofaviy", 
+      verified: true,
+      inclusiveScore: 96,
+      vacanciesCount: 18,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "Raqamli xizmatlar va e-tijorat bo'yicha yetakchi ekotizim. Ekran o'quvchi va asinxron ish muhiti.",
+      location: "Toshkent / 100% Masofaviy",
+      rating: "4.9"
+    },
+    { 
+      id: "epam",
+      name: "EPAM Systems", 
+      type: "Global IT & Consulting", 
+      logoText: "EP",
+      badge: "Global WCAG Standarti", 
+      verified: true,
+      inclusiveScore: 95,
+      vacanciesCount: 9,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "Xalqaro dasturiy ta'minot giganti. WCAG 2.1 AA va jahon miqyosidagi mentorlik dasturi.",
+      location: "Gibrid / 100% Masofaviy",
+      rating: "4.8"
+    },
+    { 
+      id: "beeline",
+      name: "Beeline Uzbekistan", 
+      type: "Telekommunikatsiya", 
+      logoText: "BL",
+      badge: "Matnli Aloqa & Chat", 
+      verified: true,
+      inclusiveScore: 94,
+      vacanciesCount: 14,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "Eshitishida nuqsoni bor shaxslar uchun 100% matnli mijozlar bilan aloqa markazi.",
+      location: "100% Masofaviy",
+      rating: "4.7"
+    },
+    { 
+      id: "payme",
+      name: "Payme / TBC Bank", 
+      type: "FinTech & Bank", 
+      logoText: "PM",
+      badge: "Surdo & Ergonomik", 
+      verified: true,
+      inclusiveScore: 91,
+      vacanciesCount: 8,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "To'lov xizmatlari va inklyuziv moliyaviy interfeyslar bo'yicha ilg'or jamoa.",
+      location: "Toshkent (Pandusli) / Masofaviy",
+      rating: "4.8"
+    },
+    { 
+      id: "itpark",
+      name: "IT Park Uzbekistan", 
+      type: "Davlat IT Ekotizimi", 
+      logoText: "IT",
+      badge: "Milliy Hub", 
+      verified: true,
+      inclusiveScore: 97,
+      vacanciesCount: 24,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "O'zbekistonda IT sohasida nogironligi bor shaxslar uchun bepul ta'lim va ish o'rinlari kafolati.",
+      location: "Barcha 14 ta hudud",
+      rating: "5.0"
+    },
+    { 
+      id: "undp",
+      name: "BMT Taraqqiyot Dasturi (UNDP)", 
+      type: "Xalqaro Tashkilot", 
+      logoText: "UN",
+      badge: "SDG 8 & 10 Hamkori", 
+      verified: true,
+      inclusiveScore: 99,
+      vacanciesCount: 5,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "BMT Barqaror Rivojlanish Maqsadlari bo'yicha teng imkoniyatlar yaratish milliy loyihasi.",
+      location: "Toshkent / Masofaviy",
+      rating: "5.0"
+    },
+    { 
+      id: "mohirdev",
+      name: "Mohirdev Platformasi", 
+      type: "EdTech & IT Ta'lim", 
+      logoText: "MD",
+      badge: "Ta'lim & Karyera", 
+      verified: true,
+      inclusiveScore: 90,
+      vacanciesCount: 6,
+      features: ["Remote", "Accessibility friendly", "Flexible work"],
+      description: "Inklyuziv IT kurslari, subtitrli darsliklar va ishga joylashtirish kafolati.",
+      location: "Onlayn",
+      rating: "4.8"
+    }
   ],
 
   // Enterprise Inclusive Vacancies
   vacancies: [
     {
       id: 1,
-      title: "Frontend Dasturchi (React.js / TypeScript)",
+      title: "Frontend Developer",
+      company: "UzAuto",
+      department: "engineering",
+      location: "Toshkent",
+      workType: "remote",
+      salary: "8–12 mln so‘m",
+      salaryNumeric: 10000000,
+      experience: "1-3 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 94,
+      matchReasons: [
+        "JavaScript",
+        "React",
+        "Remote",
+        "Sizning tajribangizga mos"
+      ],
+      skills: ["JavaScript", "React", "Remote", "HTML/CSS"],
+      featured: true,
+      accommodations: [
+        "100% Masofaviy ish (Remote)",
+        "Ekran o'quvchi (NVDA/JAWS) mos dasturlar",
+        "Moslashuvchan grafik"
+      ],
+      accommodationTypes: ["remote", "screen_reader", "flexible_hours"],
+      description: "Inklyuziv korporativ tizimlar va portallarni ishlab chiqish uchun tajribali Frontend Developer qidirilmoqda. Ish 100% uydan amalga oshiriladi.",
+      requirements: [
+        "JavaScript, React.js va zamonaviy veb texnologiyalar",
+        "Veb qulaylik (a11y) standartlari bilan ishlash",
+        "Git va masofaviy jamoa bilan hamkorlik"
+      ],
+      benefits: [
+        "Uyda ishlash uchun ergonomik noutbuk va jihozlar",
+        "To'liq rasmiy mehnat shartnomasi va tibbiy sug'urta",
+        "Doimiy malaka oshirish imkoniyatlari"
+      ]
+    },
+    {
+      id: 2,
+      title: "React Developer",
       company: "Uzum Technologies",
       department: "engineering",
-      location: "Toshkent / 100% Masofaviy",
+      location: "Toshkent",
       workType: "remote",
-      salary: "14,000,000 - 22,000,000 UZS",
+      salary: "14–22 mln so‘m",
       salaryNumeric: 18000000,
-      experience: "1-3 yil",
-      employmentType: "To'liq stavka",
+      experience: "2+ yil",
+      employmentType: "To‘liq stavka",
       aiMatch: 96,
+      matchReasons: [
+        "TypeScript",
+        "React",
+        "Remote",
+        "WCAG 2.1 AA tajribasi"
+      ],
+      skills: ["React", "TypeScript", "Remote", "Tailwind/CSS", "Redux"],
       featured: true,
       accommodations: [
         "100% Masofaviy ish (Full Remote)",
         "Ekran o'quvchi (Screen Reader) mos dasturlar",
         "Asinxron jamoa va moslashuvchan ish soatlari",
-        "Kompaniya tomonidan ergonomik jihozlar"
+        "Ergonomik jihozlash granti"
       ],
       accommodationTypes: ["remote", "screen_reader", "flexible_hours"],
-      description: "Biz inklyuziv jamoamizga foydalanuvchi interfeyslari va veb-qulaylik (WCAG) standartlariga javob beruvchi mahsulotlar yaratish uchun iqtidorli Frontend dasturchini taklif qilamiz.",
+      description: "Uzum ekotizimi mahsulotlarini WCAG standartlariga to'liq mos keluvchi intuitiv interfeyslarini yaratish uchun React Developer taklif etiladi.",
       requirements: [
-        "React.js, TypeScript va zamonaviy CSS bilan ishlash",
-        "Veb qulaylik (a11y) asosiy tushunchalari",
-        "Git va jamoaviy masofaviy vositalardan foydalanish"
+        "React.js, TypeScript va zamonaviy arxitektura",
+        "Veb-accessibility tamoyillarini bilish",
+        "Murakkab UI komponentlarini optimallashtirish"
       ],
       benefits: [
-        "Uyda qulay ishlash uchun 5,000,000 UZS gacha jihozlash granti",
-        "To'liq tibbiy sug'urta va cheksiz kasallik ta'tili",
-        "Bepul ingliz tili va malaka oshirish kurslari"
-      ]
-    },
-    {
-      id: 2,
-      title: "Mijozlarni Qo'llab-Quvvatlash Mutaxassisi (Matnli Chat)",
-      company: "Beeline Uzbekistan",
-      department: "support",
-      location: "100% Masofaviy (Online Chat)",
-      workType: "remote",
-      salary: "6,000,000 - 9,500,000 UZS",
-      salaryNumeric: 8000000,
-      experience: "Tajribasiz ham qabul qilinadi",
-      employmentType: "Moslashuvchan grafik",
-      aiMatch: 95,
-      featured: true,
-      accommodations: [
-        "Eshitishda imkoniyati cheklanganlar uchun 100% matnli aloqa",
-        "Ovozli qo'ng'iroqlarsiz, faqat chat tizimi",
-        "Qisqa 4 soatlik yoki 8 soatlik smenalar"
-      ],
-      accommodationTypes: ["hearing", "remote", "flexible_hours"],
-      description: "Mijozlarga faqat matnli onlayn chat orqali yordam ko'rsatish. Ovozli muloqot talab etilmaydi, eshitishida imkoniyati cheklangan shaxslar uchun ayni muddao.",
-      requirements: [
-        "O'zbek va rus tillarida savodli yozma muloqot",
-        "Kompyuterda tez matn terish qobiliyati",
-        "Xushmuomalalik va mijozga g'amxo'rlik"
-      ],
-      benefits: [
-        "Bepul noutbuk va tezyurar internet xarajati qoplab beriladi",
-        "Rasmiy mehnat daftarchasi va barcha soliq imtiyozlari"
+        "5,000,000 UZS gacha ish joyini ergonomik jihozlash granti",
+        "To'liq tibbiy sug'urta va bepul ingliz tili darslari"
       ]
     },
     {
       id: 3,
-      title: "Junior QA Tester (Accessibility & Usability)",
-      company: "EPAM Systems",
-      department: "engineering",
-      location: "Gibrid yoki 100% Masofaviy",
-      workType: "remote",
-      salary: "10,000,000 - 16,000,000 UZS",
-      salaryNumeric: 13000000,
-      experience: "6 oy - 1 yil",
-      employmentType: "To'liq stavka",
-      aiMatch: 94,
-      featured: false,
-      accommodations: [
-        "Ekran o'quvchi (NVDA, JAWS, VoiceOver) orqali testlash",
-        "100% masofaviy xalqaro loyihalar",
-        "Shaxsiy mentor va moslashuv rejasi"
+      title: "Web Designer & UI/UX",
+      company: "Payme FinTech",
+      department: "design",
+      location: "Toshkent",
+      workType: "hybrid",
+      salary: "10–18 mln so‘m",
+      salaryNumeric: 14000000,
+      experience: "1-2 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 92,
+      matchReasons: [
+        "Figma",
+        "Inklyuziv Dizayn",
+        "Kontrast & Tipografiya"
       ],
-      accommodationTypes: ["screen_reader", "remote", "neurodivergent"],
-      description: "Global ilovalarni nogironligi bor shaxslar uchun qulayligini (WCAG 2.1 AA) tekshirish va xatoliklarni aniqlash.",
+      skills: ["Figma", "UI/UX", "Accessibility", "Design Systems"],
+      featured: true,
+      accommodations: [
+        "Ofisda panduslar, avtomatik eshik va lift mavjud",
+        "Maxsus rang ko'rligi monitorlari",
+        "Haftada 3-4 kun uydan ishlash imkoniyati"
+      ],
+      accommodationTypes: ["physical_ramps", "remote", "flexible_hours"],
+      description: "Moliya va to'lov ilovalarini nogironligi bor fuqarolar uchun qulay, chiroyli va qulay qilish ustida ishlovchi Web Designer kerak.",
       requirements: [
-        "Dasturiy ta'minotni testlash asoslari",
-        "Ekran o'quvchi vositalaridan amaliy foydalanish tajribasi",
-        "Boshlang'ich ingliz tili"
+        "Figma vositasida prototiplash va dizayn tizimlari",
+        "Yuqori kontrast va o'qiluvchanlik qoidalarini bilish",
+        "Portfolio namunalari"
       ],
       benefits: [
-        "EPAM Global sertifikatlari",
-        "Xalqaro jamoada ingliz tilini o'stirish imkoniyati"
+        "Zamonaviy ergonomik ish stoli va texnika",
+        "Xalqaro dizayn konferensiyalarida qatnashish imkoniyati"
       ]
     },
     {
       id: 4,
-      title: "UI/UX Dizayner & Inklyuziv Dizayn Mutaxassisi",
-      company: "Payme FinTech",
-      department: "design",
-      location: "Toshkent (Pandusli Ofis) / Masofaviy",
-      workType: "hybrid",
-      salary: "15,000,000 - 24,000,000 UZS",
-      salaryNumeric: 19500000,
-      experience: "2+ yil",
-      employmentType: "To'liq stavka",
-      aiMatch: 92,
+      title: "Mijozlarga Xizmat Ko'rsatish Mutaxassisi",
+      company: "Beeline Uzbekistan",
+      department: "support",
+      location: "100% Masofaviy (Chat)",
+      workType: "remote",
+      salary: "6–10 mln so‘m",
+      salaryNumeric: 8000000,
+      experience: "Tajribasiz ham qabul qilinadi",
+      employmentType: "Moslashuvchan grafik",
+      aiMatch: 95,
+      matchReasons: [
+        "Faqat Matnli Chat",
+        "Ovozli Qo'ng'iroqlarsiz",
+        "Uydan Ishlash"
+      ],
+      skills: ["Online Chat", "O'zbek tili", "Rus tili", "Tezkor Matn"],
       featured: false,
       accommodations: [
-        "Ofisda avtomatik eshiklar, panduslar va lift mavjud",
-        "Rang ko'rligi (Color blindness) uchun maxsus monitorlar",
-        "Haftada 3 kun masofaviy ishlash imkoniyati"
+        "Eshitishida imkoniyati cheklanganlar uchun 100% matnli aloqa",
+        "Ovozli qo'ng'iroqlarsiz, faqat matnli chat tizimi",
+        "4 soatlik yoki 8 soatlik qulay smenalar"
       ],
-      accommodationTypes: ["physical_ramps", "remote", "flexible_hours"],
-      description: "Moliya ilovalarini keksalar va nogironligi bor insonlar uchun qulay va intuitiv qilish ustida ishlash.",
+      accommodationTypes: ["hearing", "remote", "flexible_hours"],
+      description: "Mijozlar savollariga onlayn chat orqali javob berish. Ovozli muloqot talab etilmaydi, eshitishida nuqsoni bor nomzodlar uchun juda qulay.",
       requirements: [
-        "Figma va dizayn tizimlari bilan ishlash",
-        "Kontrast, tipografiya va ergonomika tamoyillarini bilish",
-        "Portfolio"
+        "O'zbek va rus tillarida savodli yozma muloqot",
+        "Kompyuterda tez matn terish qobiliyati",
+        "Mijozlarga xushmuomala munosabat"
       ],
       benefits: [
-        "Fintech sohasidagi eng yuqori darajadagi bonuslar",
-        "Sport zali va fizioterapiya uchun kompensatsiya"
+        "Bepul noutbuk va tezyurar internet xarajati qoplab beriladi",
+        "Rasmiy ish staji va barcha soliq imtiyozlari"
       ]
     },
     {
       id: 5,
-      title: "Data Annotation & AI O'rgatish Mutaxassisi",
-      company: "IT Park Uzbekistan",
-      department: "data",
-      location: "100% Masofaviy (Barcha hududlardan)",
+      title: "QA Accessibility Tester",
+      company: "EPAM Systems",
+      department: "engineering",
+      location: "Toshkent / Masofaviy",
       workType: "remote",
-      salary: "5,500,000 - 8,500,000 UZS",
-      salaryNumeric: 7000000,
-      experience: "Tajribasiz",
-      employmentType: "To'liq yoki yarim stavka",
-      aiMatch: 91,
+      salary: "11–17 mln so‘m",
+      salaryNumeric: 14000000,
+      experience: "6 oy - 1 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 94,
+      matchReasons: [
+        "Screen Reader",
+        "NVDA / JAWS",
+        "WCAG 2.1 AA Audit"
+      ],
+      skills: ["QA Testing", "NVDA", "JAWS", "WCAG", "Bug Tracking"],
       featured: false,
       accommodations: [
-        "O'zbekistonning istalgan viloyatidan 100% onlayn ishlash",
-        "Erkin kun tartibi (istalgan soatda ishlash mumkin)",
-        "Oddiy va tushunarli vizual interfeys"
+        "Ekran o'quvchi dasturlari orqali to'liq testlash",
+        "100% masofaviy xalqaro loyihalar",
+        "Shaxsiy mentorlik ko'magi"
       ],
-      accommodationTypes: ["remote", "flexible_hours", "neurodivergent"],
-      description: "Sun'iy intellekt modellarini o'qitish uchun matn, rasm va audio ma'lumotlarni belgilash (annotation).",
+      accommodationTypes: ["screen_reader", "remote", "flexible_hours"],
+      description: "Veb va mobil ilovalarni ekran o'quvchi vositalar orqali test qilish hamda accessibility kamchiliklarini qayd etish.",
       requirements: [
-        "Diqqatlilik va internetdan foydalanish",
-        "Kompyuter yoki planshetga ega bo'lish"
+        "NVDA, JAWS yoki VoiceOver dan amaliy foydalanish tajribasi",
+        "Dasturiy ta'minot testlash asoslari",
+        "Boshlang'ich ingliz tili"
       ],
       benefits: [
-        "IT Park rezidenti imtiyozlari",
-        "Bepul IT dasturlash kurslariga yo'llanma"
+        "EPAM xalqaro sertifikatlari",
+        "Global jamoada ishlash tajribasi"
       ]
     },
     {
       id: 6,
-      title: "Kontent Menejer & SEO Kopirayter",
-      company: "Mohirdev",
-      department: "marketing",
+      title: "Ma’lumotlar Kiritish & AI Operator",
+      company: "IT Park Uzbekistan",
+      department: "data",
       location: "100% Masofaviy",
       workType: "remote",
-      salary: "7,000,000 - 11,000,000 UZS",
-      salaryNumeric: 9000000,
-      experience: "1 yil",
-      employmentType: "Moslashuvchan",
-      aiMatch: 89,
+      salary: "5–8 mln so‘m",
+      salaryNumeric: 6500000,
+      experience: "Boshlang'ich",
+      employmentType: "Moslashuvchan grafik",
+      aiMatch: 93,
+      matchReasons: [
+        "Data Entry",
+        "AI Annotation",
+        "Masofaviy"
+      ],
+      skills: ["Excel", "Data Entry", "AI Labeling", "Diqqatlilik"],
       featured: false,
       accommodations: [
-        "100% Masofaviy va asinxron aloqa",
-        "Matnni ovozda yozish (Speech-to-Text) vositalari qo'llab-quvvatlanadi"
+        "100% masofaviy ish",
+        "Erkin grafik va kunlik vazifalar",
+        "Oson o'rganiluvchi maxsus interfeys"
       ],
-      accommodationTypes: ["remote", "flexible_hours"],
-      description: "Ta'lim platformasi uchun IT mavzularida foydali maqolalar va qo'llanmalar yozish.",
+      accommodationTypes: ["remote", "hearing", "flexible_hours"],
+      description: "Sun'iy intellekt modellarini o'rgatish uchun matnli va grafik ma'lumotlarni saralash hamda tizimga kiritish.",
       requirements: [
-        "O'zbek tilida ravon va savodli yozish",
-        "IT sohasiga qiziqish"
+        "Boshlang'ich kompyuter savodxonligi",
+        "Diqqatli va mas'uliyatli bo'lish",
+        "O'zbek tilida savodli yozish"
       ],
       benefits: [
-        "Mohirdev dagi barcha kurslarga cheksiz bepul kirish",
-        "Yillik sayohat vaucherlari"
+        "Bepul dastlabki o'qitish kursi",
+        "Qulay kunlik grafik"
+      ]
+    },
+    {
+      id: 7,
+      title: "Tarjimon & Kontent Kopirayter",
+      company: "BMT Taraqqiyot Dasturi (UNDP)",
+      department: "marketing",
+      location: "Masofaviy",
+      workType: "remote",
+      salary: "9–15 mln so‘m",
+      salaryNumeric: 12000000,
+      experience: "1-2 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 91,
+      matchReasons: [
+        "Ingliz tili",
+        "O'zbek tili",
+        "Kopirayting"
+      ],
+      skills: ["Translation", "Copywriting", "English", "Editing"],
+      featured: false,
+      accommodations: [
+        "100% uydan ishlash",
+        "Asinxron aloqa tizimi",
+        "Ekran o'quvchi mos dasturlar"
+      ],
+      accommodationTypes: ["remote", "screen_reader", "hearing"],
+      description: "Inklyuzivlik va ijtimoiy loyihalar bo'yicha maqolalar, hisobotlar va qo'llanmalarni o'zbek va ingliz tillariga professional tarjima qilish.",
+      requirements: [
+        "O'zbek va ingliz tillarini mukammal bilish (C1/B2)",
+        "Matnlarni tahrirlash va moslashtirish ko'nikmasi"
+      ],
+      benefits: [
+        "Xalqaro loyihalarda ishlash tajribasi",
+        "Diplomatik va BMT sertifikatlari"
+      ]
+    },
+    {
+      id: 8,
+      title: "Grafik Dizayner & Brending Mutaxassisi",
+      company: "Uzum Technologies",
+      department: "design",
+      location: "Samarqand / Masofaviy",
+      workType: "remote",
+      salary: "9–14 mln so‘m",
+      salaryNumeric: 11000000,
+      experience: "1-2 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 95,
+      matchReasons: [
+        "Figma",
+        "Photoshop",
+        "Masofaviy",
+        "Inklyuziv Dizayn"
+      ],
+      skills: ["Figma", "Photoshop", "Illustrator", "Branding"],
+      featured: false,
+      accommodations: [
+        "100% Masofaviy ish",
+        "Moslashuvchan grafik",
+        "Maxsus rang kalibrli uskunalar"
+      ],
+      accommodationTypes: ["remote", "flexible_hours"],
+      description: "Samarqand va butun respublika bo'ylab masofadan brend dizayn elementlarini tayyorlash.",
+      requirements: [
+        "Figma, Adobe Illustrator dasturlarini mukammal bilish",
+        "Zamonaviy ijtimoiy tarmoqlar vizuallarini yaratish",
+        "Portfolio namunalari"
+      ],
+      benefits: [
+        "Masofaviy ergonomik texnika granti",
+        "Uzum xodimlari uchun korporativ chegirmalar"
+      ]
+    },
+    {
+      id: 9,
+      title: "Onlayn Mijozlar Menejeri (Chat)",
+      company: "Mohirdev Platformasi",
+      department: "support",
+      location: "Farg'ona",
+      workType: "remote",
+      salary: "6–9 mln so‘m",
+      salaryNumeric: 7500000,
+      experience: "Boshlang'ich",
+      employmentType: "Moslashuvchan grafik",
+      aiMatch: 93,
+      matchReasons: [
+        "Faqat Matnli Chat",
+        "CRM",
+        "Masofaviy"
+      ],
+      skills: ["CRM", "Online Chat", "O'zbek tili", "Yozma Aloqa"],
+      featured: false,
+      accommodations: [
+        "Eshitish imkoniyati cheklanganlar uchun faqat chat",
+        "100% masofaviy ishlash",
+        "Moslashuvchan smena"
+      ],
+      accommodationTypes: ["hearing", "remote", "flexible_hours"],
+      description: "Platforma foydalanuvchilariga matnli chat orqali texnik va o'quv yordami ko'rsatish.",
+      requirements: [
+        "O'zbek tilida bexato yozma nutq",
+        "Tezkor yozish ko'nikmasi",
+        "Do'stona muomala"
+      ],
+      benefits: [
+        "Mohirdev barcha IT kurslariga bepul obuna",
+        "Rasmiy ish staji va rag'batlantiruvchi bonuslar"
+      ]
+    },
+    {
+      id: 10,
+      title: "Python & Data Operator",
+      company: "IT Park Uzbekistan",
+      department: "engineering",
+      location: "Buxoro",
+      workType: "remote",
+      salary: "10–16 mln so‘m",
+      salaryNumeric: 13000000,
+      experience: "1-2 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 92,
+      matchReasons: [
+        "Python",
+        "SQL",
+        "Masofaviy"
+      ],
+      skills: ["Python", "SQL", "Pandas", "Data Cleaning"],
+      featured: false,
+      accommodations: [
+        "Ekran o'quvchi mos vositalar",
+        "100% uydan ishlash",
+        "Asinxron vazifalar"
+      ],
+      accommodationTypes: ["screen_reader", "remote", "flexible_hours"],
+      description: "Hududiy IT loyihalari uchun ma'lumotlarni tahlil qilish va Python skriptlari orqali avtomatlashtirish.",
+      requirements: [
+        "Python dasturlash tili va SQL asoslari",
+        "Ma'lumotlar bilan ishlash ko'nikmasi"
+      ],
+      benefits: [
+        "IT Park rezidenti imtiyozlari",
+        "Xalqaro IT sertifikatsiyalar xarajatlarini qoplash"
+      ]
+    },
+    {
+      id: 11,
+      title: "SMM & Ijtimoiy Tarmoqlar Mutaxassisi",
+      company: "Payme FinTech",
+      department: "marketing",
+      location: "Andijon",
+      workType: "remote",
+      salary: "8–13 mln so‘m",
+      salaryNumeric: 10500000,
+      experience: "1 yil",
+      employmentType: "To‘liq stavka",
+      aiMatch: 94,
+      matchReasons: [
+        "SMM",
+        "Kopirayting",
+        "Uydan Ishlash"
+      ],
+      skills: ["SMM", "Copywriting", "Telegram", "Instagram"],
+      featured: false,
+      accommodations: [
+        "100% masofaviy ish",
+        "Faqat matnli va asinxron aloqa",
+        "Moslashuvchan ish soatlari"
+      ],
+      accommodationTypes: ["remote", "hearing", "flexible_hours"],
+      description: "Payme inklyuziv moliyaviy xizmatlari haqida qiziqarli va sodda tilda kontent yaratish.",
+      requirements: [
+        "SMM va ijtimoiy tarmoqlar qonuniyatlarini tushunish",
+        "O'zbek tilida kreativ matnlar yoza olish"
+      ],
+      benefits: [
+        "Mobil aloqa va internet xarajatlari qoplanadi",
+        "Erkin grafik"
+      ]
+    },
+    {
+      id: 12,
+      title: "AI Kontent Tahlilchisi & Moderator",
+      company: "IT Park Uzbekistan",
+      department: "data",
+      location: "Qoraqalpog'iston Respublikasi",
+      workType: "remote",
+      salary: "6–10 mln so‘m",
+      salaryNumeric: 8000000,
+      experience: "Boshlang'ich",
+      employmentType: "Moslashuvchan grafik",
+      aiMatch: 93,
+      matchReasons: [
+        "Data Moderation",
+        "Masofaviy",
+        "Qoraqalpoq & O'zbek tili"
+      ],
+      skills: ["Data Review", "O'zbek tili", "Qoraqalpoq tili", "Excel"],
+      featured: false,
+      accommodations: [
+        "100% Masofaviy ish",
+        "Erkin grafik",
+        "Matnli instruksiyalar"
+      ],
+      accommodationTypes: ["remote", "hearing", "flexible_hours"],
+      description: "Nukus va Qoraqalpog'iston hududidagi mutaxassislar uchun AI modellarining matn va media kontentlarini tekshirish.",
+      requirements: [
+        "Kompyuter savodxonligi",
+        "O'zbek yoki qoraqalpoq tilida savodlilik"
+      ],
+      benefits: [
+        "Bepul onlayn tayyorgarlik kursi",
+        "Ish joyini jihozlash ko'magi"
       ]
     }
   ],
 
-  // AI Interview Simulator Question Bank
-  interviewQuestions: [
-    {
-      id: 1,
-      category: "Masofaviy ish & Moslashuv",
-      question: "O'zingiz uchun masofaviy ish joyini qanday tashkil qilgansiz va jamoa bilan asinxron aloqani qanday yo'lga qo'yasiz?",
-      idealPoints: ["Ish qurollari", "Asinxron aloqa madaniyati", "Vaqtni rejalashtirish"]
-    },
-    {
-      id: 2,
-      category: "Texnik Ko'nikmalar",
-      question: "Frontend loyihalarda WCAG 2.1 AA veb-qulaylik standartlarini ta'minlash uchun qanday usullardan foydalanasiz?",
-      idealPoints: ["Semantik HTML", "ARIA atributlari", "Kontrast nisbati (4.5:1)", "Klaviatura fokusi"]
-    },
-    {
-      id: 3,
-      category: "Muammolarni Hal Qilish",
-      question: "Loyihada kutilmagan to'siq yoki texnik qiyinchilikka duch kelganingizda qanday harakat qilasiz?",
-      idealPoints: ["Tahlil qilish", "Jamoa bilan ochiq muloqot", "Hujjatlarni o'rganish"]
-    }
-  ],
-
-  // Sample Resumes for Laser Scanner Demo
-  cvSamples: {
-    frontend: {
-      name: "Frontend & Accessibility Dasturchi",
-      text: `Azizbek Saidov — Senior Frontend Dasturchi.
-Texnologiyalar: React.js, TypeScript, Next.js, HTML5, CSS3, Tailwind CSS, WCAG 2.1 AA Accessibility, Git, Jest.
-Tajriba: 3 yil Frontend dasturlash bo'yicha masofaviy loyihalar, ekran o'quvchilar bilan moslashtirilgan to'siqsiz veb-saytlar va foydalanuvchi interfeyslari yaratish.
-Talab etiladigan qulaylik: 100% Masofaviy ish joyi, asinxron aloqa.`
-    },
-    qa: {
-      name: "Accessibility QA Tester",
-      text: `Dilnoza Rahimova — QA Accessibility Tester.
-Texnologiyalar: NVDA, JAWS, VoiceOver, Chrome DevTools, Lighthouse, WCAG 2.1 AA audit, Jira, TestRail.
-Tajriba: 2 yil veb va mobil ilovalarni ekran o'quvchilar va rang kontrasti bo'yicha sifatini tekshirish.
-Talab etiladigan qulaylik: Ekran o'quvchi bilan mos dasturiy ta'minot, masofaviy ish.`
-    },
-    support: {
-      name: "Mijozlarga Xizmat Ko'rsatish (Matnli)",
-      text: `Jasurbek Ergashev — Onlayn Chat Qo'llab-quvvatlash Mutaxassisi.
-Ko'nikmalar: Tez yozish (400 belgi/daqiqada), O'zbek va rus tillari, CRM tizimlari, mijozlar bilan yozma muloqot.
-Talab etiladigan qulaylik: Eshitishda imkoniyati cheklangan, faqat matnli onlayn chat orqali ishlash.`
-    }
-  },
-
-  // Inclusive Talent Showcase & Self-Promotion Candidate Directory
+  // Candidates Showcase Database
   candidates: [
     {
-      id: 'cand-1',
-      name: 'Azizbek Saidov',
-      role: 'candidate',
-      title: 'Senior Frontend & WCAG 2.1 AA Dasturchi',
-      status: 'Faol izlanmoqda',
-      isOpenToWork: true,
-      bio: '3+ yillik tajribaga ega Frontend dasturchiman. Inklyuziv veb-saytlar va WCAG 2.1 AA veb-qulaylik standartlariga to\'liq mos interfeyslar yarataman. Masofaviy jamoada ishlashga tayyorman.',
-      category: 'engineering',
-      skills: ['React.js', 'TypeScript', 'WCAG 2.1 AA', 'Next.js', 'TailwindCSS', 'Jest'],
-      accommodations: [
-        '100% Masofaviy ish (Full Remote)',
-        'Asinxron jamoaviy aloqa',
-        'Moslashuvchan ish soatlari'
-      ],
-      accommodationTypes: ['remote', 'flexible_hours'],
-      condition: 'Harakatlanishda imkoniyati cheklangan (Masofaviy ish)',
-      expectedSalary: '16,000,000 - 22,000,000 UZS',
-      salaryNumeric: 18000000,
-      experience: '3+ yil',
-      location: 'Toshkent / Masofaviy',
-      portfolioUrl: 'https://github.com/azizbek-dev',
-      audioIntro: 'Assalomu alaykum! Men to\'siqsiz va ekran o\'quvchilarga to\'liq mos veb interfeyslar yaratuvchi dasturchiman.',
+      id: "cand-1",
+      name: "Azizbek Saidov",
+      title: "Senior Frontend & WCAG 2.1 AA Dasturchi",
+      avatar: "AS",
+      location: "Toshkent",
+      expectedSalary: "16–22 mln so‘m",
+      category: "engineering",
       aiScore: 98,
-      avatar: 'AS',
-      verified: true
+      bio: "4 yillik tajribaga ega Frontend dasturchi. React, TypeScript va WCAG qulaylik standartlari bo'yicha mutaxassis.",
+      skills: ["JavaScript", "React", "TypeScript", "WCAG 2.1 AA", "Tailwind CSS", "Redux"],
+      accommodations: ["100% Masofaviy ish", "Ekran o'quvchi mos vositalar", "Moslashuvchan grafik"],
+      accommodationTypes: ["remote", "screen_reader", "flexible_hours"]
     },
     {
-      id: 'cand-2',
-      name: 'Dilnoza Rahimova',
-      role: 'candidate',
-      title: 'QA Accessibility & Screen Reader Tester',
-      status: 'Faol izlanmoqda',
-      isOpenToWork: true,
-      bio: 'Ko\'rishda imkoniyati cheklangan mutaxassis. NVDA, JAWS va VoiceOver ekran o\'quvchilari orqali xalqaro ilovalarni WCAG standartlari bo\'yicha sifatini tekshiraman.',
-      category: 'engineering',
-      skills: ['NVDA', 'JAWS', 'VoiceOver', 'WCAG 2.1 Audit', 'Jira', 'TestRail', 'Lighthouse'],
-      accommodations: [
-        'Ekran o\'quvchi bilan mos dasturlar',
-        '100% Masofaviy ish',
-        'Shaxsiy moslashuv rejasi'
-      ],
-      accommodationTypes: ['screen_reader', 'remote'],
-      condition: 'Ko\'rishda imkoniyati cheklangan (Ekran o\'quvchi)',
-      expectedSalary: '12,000,000 - 16,000,000 UZS',
-      salaryNumeric: 14000000,
-      experience: '2 yil',
-      location: 'Samarqand / Masofaviy',
-      portfolioUrl: 'https://dilnoza-qa.dev',
-      audioIntro: 'Salom! Men dasturiy ta\'minotning to\'siqsiz ekanligini sinovdan o\'tkazaman va audit hisobotlarini tayyorlayman.',
+      id: "cand-2",
+      name: "Gulnora Karimova",
+      title: "UI/UX Dizayner & Inklyuzivlik Mutaxassisi",
+      avatar: "GK",
+      location: "Samarqand",
+      expectedSalary: "12–16 mln so‘m",
+      category: "design",
       aiScore: 96,
-      avatar: 'DR',
-      verified: true
+      bio: "Figma va dizayn tizimlari orqali yuqori kontrastli va qulay interfeyslar loyihalovchi dizayner.",
+      skills: ["Figma", "UI/UX", "Accessibility", "Design Systems", "Prototyping"],
+      accommodations: ["100% Masofaviy ish", "Moslashuvchan ish soatlari"],
+      accommodationTypes: ["remote", "flexible_hours"]
     },
     {
-      id: 'cand-3',
-      name: 'Jasurbek Ergashev',
-      role: 'candidate',
-      title: 'Onlayn Chat & Matnli CRM Qo\'llab-quvvatlash',
-      status: 'Faol izlanmoqda',
-      isOpenToWork: true,
-      bio: 'Eshitishda imkoniyati cheklangan mutaxassis. Daqiqasiga 420 ta belgi tezlikda matn teraman. Mijozlar bilan faqat yozma chat va CRM orqali tezkor muloqot qilaman.',
-      category: 'support',
-      skills: ['Tezkor yozish (420 simvol/daq)', 'CRM & Helpdesk', 'O\'zbek & Rus tillari', 'Imo-ishora tili'],
-      accommodations: [
-        'Faqat matnli onlayn chat aloqasi',
-        'Ovozli qo\'ng\'iroqlarsiz ish tartibi',
-        'Surdotarjimon ko\'magi'
-      ],
-      accommodationTypes: ['hearing', 'remote', 'flexible_hours'],
-      condition: 'Eshitishda imkoniyati cheklangan (Faqat matnli)',
-      expectedSalary: '7,000,000 - 10,000,000 UZS',
-      salaryNumeric: 8500000,
-      experience: '1.5 yil',
-      location: 'Farg\'ona / Masofaviy',
-      portfolioUrl: 'https://jasur-support.uz',
-      audioIntro: 'Assalomu alaykum! Men yozma chatlar va mijozlarga xizmat ko\'rsatish bo\'yicha masofaviy ishlashga tayyorman.',
-      aiScore: 95,
-      avatar: 'JE',
-      verified: true
-    },
-    {
-      id: 'cand-4',
-      name: 'Malika Usmonova',
-      role: 'candidate',
-      title: 'UI/UX & Inklyuziv Dizayner',
-      status: 'Faol izlanmoqda',
-      isOpenToWork: true,
-      bio: 'Rang ko\'rligi va harakat cheklovlariga ega insonlar uchun qulay, yuqori kontrastli (16:1) va estetik Figma dizayn tizimlarini ishlab chiqaman.',
-      category: 'design',
-      skills: ['Figma', 'Design Systems', 'WCAG Contrast 16:1', 'User Research', 'Prototyping', 'Accessibility'],
-      accommodations: [
-        'Pandusli ofis yoki 100% Masofaviy',
-        'Ergonomik ish o\'rni jihozlari',
-        'Gibrid moslashuvchan grafik'
-      ],
-      accommodationTypes: ['physical_ramps', 'remote', 'flexible_hours'],
-      condition: 'Harakatlanishda imkoniyati cheklangan (Arava / Pandus)',
-      expectedSalary: '18,000,000 - 25,000,000 UZS',
-      salaryNumeric: 20000000,
-      experience: '3+ yil',
-      location: 'Toshkent / Gibrid',
-      portfolioUrl: 'https://behance.net/malikaux',
-      audioIntro: 'Salom! Men inklyuziv va foydalanuvchiga qulay raqamli mahsulotlar dizaynini yarataman.',
+      id: "cand-3",
+      name: "Jasur Rahimov",
+      title: "Mijozlarga Xizmat Ko'rsatish Operator (Matnli Chat)",
+      avatar: "JR",
+      location: "Farg'ona",
+      expectedSalary: "7–10 mln so‘m",
+      category: "support",
       aiScore: 94,
-      avatar: 'MU',
-      verified: true
+      bio: "Eshitishida nuqsoni bor, kompyuterda juda tez matn teradi (350+ belgi/daqiqada). Matnli chatda 2 yillik tajriba.",
+      skills: ["Online Chat Support", "Tezkor Yozuv", "O'zbek tili", "Rus tili", "CRM"],
+      accommodations: ["100% Matnli muloqot", "Ovozli qo'ng'iroqlarsiz", "Masofaviy ish"],
+      accommodationTypes: ["hearing", "remote", "flexible_hours"]
     },
     {
-      id: 'cand-5',
-      name: 'Sardorbek Qodirov',
-      role: 'candidate',
-      title: 'Data Annotation & AI Training Mutaxassisi',
-      status: 'Faol izlanmoqda',
-      isOpenToWork: true,
-      bio: 'Sun\'iy intellekt modellarini o\'qitish uchun matn, rasm va ovozli ma\'lumotlarni aniq belgilash (annotation, tagging) bo\'yicha tajribali mutaxassis.',
-      category: 'data',
-      skills: ['CVAT', 'LabelImg', 'Text Labeling', 'Data Quality Control', 'AI Model Validation', 'Excel'],
-      accommodations: [
-        '100% Masofaviy ish (viloyatdan)',
-        'Erkin va moslashuvchan vaqt tartibi',
-        'Oddiy vizual interfeys'
-      ],
-      accommodationTypes: ['remote', 'flexible_hours', 'neurodivergent'],
-      condition: 'Erkin grafikli masofaviy ish',
-      expectedSalary: '6,000,000 - 9,000,000 UZS',
-      salaryNumeric: 7500000,
-      experience: '1 yil',
-      location: 'Andijon / Masofaviy',
-      portfolioUrl: 'https://sardor-data.uz',
-      audioIntro: 'Assalomu alaykum! Men AI ma\'lumotlar bazasini to\'ldirish va belgilash bo\'yicha masofaviy ishga tayyorman.',
-      aiScore: 92,
-      avatar: 'SQ',
-      verified: true
-    }
-  ],
-
-  // Mentors and Inclusive Coaches
-  mentors: [
-    {
-      id: 'mnt-1',
-      name: 'Dilshod Aliyev',
-      role: 'mentor',
-      title: 'Oliy toifali Surdotarjimon & Mentor',
-      specialty: 'Imo-ishora tili, Eshitishda to\'siqsiz intervyu tayyorgarligi',
-      avatar: 'DA',
-      sessionsGiven: 145,
-      rating: 4.95,
-      online: true,
-      bio: '10 yillik surdotarjima va masofaviy kouching tajribasi. IT kompaniyalar va nomzodlar o\'rtasidagi suhbatlarda ko\'maklashaman.'
-    },
-    {
-      id: 'mnt-2',
-      name: 'Gulnoza Karimova',
-      role: 'mentor',
-      title: 'Xalqaro Accessibility & Karyera Kouchi',
-      specialty: 'WCAG 2.1 AA auditi, CV tahlili va Portfolio tavsiyalari',
-      avatar: 'GK',
-      sessionsGiven: 180,
-      rating: 4.98,
-      online: true,
-      bio: 'Nogironligi bor mutaxassislarni global IT kompaniyalariga (EPAM, Yandex, Uzum) ishga kirishiga rezyume va intervyu bo\'yicha tayyorlayman.'
-    }
-  ],
-
-  // Mentor Requests for Mentor Dashboard
-  mentorRequests: [
-    {
-      id: 'req-1',
-      candidateName: 'Jasurbek Ergashev',
-      candidateId: 'cand-3',
-      serviceType: 'Surdotarjima — Onlayn Texnik Intervyu',
-      company: 'Beeline Uzbekistan',
-      date: '2026-08-20, 14:00',
-      status: 'pending', // pending | accepted | completed
-      notes: 'Beeline HR bilan onlayn suhbatda imo-ishora tilida sinxron ko\'mak kerak.'
-    },
-    {
-      id: 'req-2',
-      candidateName: 'Dilnoza Rahimova',
-      candidateId: 'cand-2',
-      serviceType: 'Rezyume & Portfolio Auditi',
-      company: 'EPAM Systems',
-      date: '2026-08-19, 11:30',
-      status: 'accepted',
-      notes: 'QA Accessibility portfolio loyihalarini xalqaro standartlarga moslashtirish bo\'yicha audit.'
-    },
-    {
-      id: 'req-3',
-      candidateName: 'Sardorbek Qodirov',
-      candidateId: 'cand-5',
-      serviceType: 'Masofaviy ish bo\'yicha konsultatsiya',
-      company: 'IT Park Uzbekistan',
-      date: '2026-08-22, 16:00',
-      status: 'pending',
-      notes: 'Data Annotation platformalarida shartnoma tuzish va soliq imtiyozlari haqida maslahat.'
+      id: "cand-4",
+      name: "Madina Umarova",
+      title: "QA Accessibility Tester & Bug Hunter",
+      avatar: "MU",
+      location: "Buxoro",
+      expectedSalary: "10–15 mln so‘m",
+      category: "engineering",
+      aiScore: 95,
+      bio: "NVDA va JAWS ekran o'quvchilarida 3 yildan ortiq tajriba. Veb-saytlar va ilovalar qulayligini tekshirish bo'yicha ekspert.",
+      skills: ["Screen Readers", "NVDA", "JAWS", "WCAG 2.1 AA", "Jira", "Manual QA"],
+      accommodations: ["Ekran o'quvchi mos dasturlar", "100% Masofaviy ish"],
+      accommodationTypes: ["screen_reader", "remote"]
     }
   ]
 };

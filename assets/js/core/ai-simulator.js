@@ -1,10 +1,11 @@
 /**
- * "Imkoniyatlar Kengligi" — Senior AI Simulation Engine
- * CV Laser Scanning, ATS scoring, Speech Synthesis Interview Evaluator, Cover Letter Generator, and Bilateral Neural Translator
+ * "Imkon-Ish" — AI Simulation Engine (MVP Prototype)
+ * Provides rule-based and algorithmic prototypes for CV scanning, mock interview evaluation,
+ * cover letter generation, and multi-language translation.
  */
 
 window.AiEngine = {
-  // Translations dictionary for realistic multi-language chat
+  // Phrase dictionary for multi-language chat simulation
   phraseBook: {
     uz: {
       greeting: "Assalomu alaykum! Inklyuziv muloqot tizimiga xush kelibsiz.",
@@ -42,47 +43,31 @@ window.AiEngine = {
    * Scan and analyze a candidate resume against inclusive job market benchmarks
    */
   async scanResume(cvText, category = 'frontend') {
-    // Artificial latency for senior laser scanning animation
-    await new Promise(resolve => setTimeout(resolve, 1400));
-
-    const lower = (cvText || '').toLowerCase();
-    const skillsFound = [];
-    
-    const skillTaxonomy = [
-      'react', 'javascript', 'typescript', 'html', 'css', 'vue', 'angular',
-      'accessibility', 'wcag', 'git', 'figma', 'python', 'sql', 'qa', 'testing',
-      'screen reader', 'remote', 'customer support', 'ui/ux', 'design'
-    ];
-
-    skillTaxonomy.forEach(s => {
-      if (lower.includes(s)) skillsFound.push(s.toUpperCase());
-    });
-
-    if (skillsFound.length === 0) {
-      skillsFound.push('REACT.JS', 'TYPESCRIPT', 'WCAG 2.1 AA', 'GIT', 'REMOTE WORKFLOW');
+    if (window.AiService) {
+      const result = await window.AiService.analyzeResumeText(cvText);
+      return {
+        atsScore: result.atsScore,
+        matchQuality: result.atsScore >= 90 ? "A'lo (Top 5%)" : "Yaxshi (Top 15%)",
+        skillsExtracted: result.extractedSkills,
+        accommodationsDetected: result.accommodationsDetected,
+        strengths: result.strengths,
+        recommendations: result.improvements,
+        matchedVacanciesCount: 6,
+        isPrototype: true
+      };
     }
 
-    const atsScore = Math.min(98, Math.max(78, 70 + skillsFound.length * 4));
-
+    // Fallback simulation
+    await new Promise(resolve => setTimeout(resolve, 800));
     return {
-      atsScore: atsScore,
-      matchQuality: atsScore >= 90 ? "A'lo (Top 5%)" : "Yaxshi (Top 15%)",
-      skillsExtracted: skillsFound,
-      accommodationsDetected: [
-        '100% Masofaviy ish (Remote-First)',
-        'Ekran o\'quvchi bilan mos dasturlar',
-        'Asinxron jamoaviy muloqot'
-      ],
-      strengths: [
-        'WCAG 2.1 AA veb-qulaylik standartlari bo\'yicha amaliy tajriba mavjud',
-        'Zamonaviy veb texnologiyalari (React / TypeScript) bo\'yicha aniq loyihalar keltirilgan',
-        'Masofaviy jamoada asinxron ishlash ko\'nikmasi yuqori'
-      ],
-      recommendations: [
-        'GitHub profilingizdagi ochiq manbali inklyuziv loyihalarga havolalarni qo\'shing',
-        'Ingliz tili B2 sertifikatini ko\'rsatish xalqaro vakansiyalarga imkoniyatni 40% ga oshiradi'
-      ],
-      matchedVacanciesCount: 6
+      atsScore: 92,
+      matchQuality: "A'lo (Top 5%)",
+      skillsExtracted: ['REACT.JS', 'TYPESCRIPT', 'WCAG 2.1 AA', 'GIT'],
+      accommodationsDetected: ['100% Masofaviy ish (Remote-First)'],
+      strengths: ['WCAG 2.1 AA veb-qulaylik standartlari bo\'yicha amaliy tajriba mavjud'],
+      recommendations: ['GitHub profilingizdagi ochiq manbali inklyuziv loyihalarga havolalarni qo\'shing'],
+      matchedVacanciesCount: 6,
+      isPrototype: true
     };
   },
 
@@ -90,20 +75,24 @@ window.AiEngine = {
    * Evaluate user's spoken or typed answer in mock interview
    */
   evaluateInterviewAnswer(questionText, answerText) {
+    if (window.AiService) {
+      return window.AiService.evaluateInterviewAnswer(questionText, answerText);
+    }
+
     const textLen = (answerText || '').trim().length;
-    
     let clarityScore = textLen > 80 ? 9.5 : (textLen > 30 ? 8.2 : 6.5);
-    let techScore = (answerText.toLowerCase().includes('react') || answerText.toLowerCase().includes('tajriba') || answerText.toLowerCase().includes('wcag') || answerText.toLowerCase().includes('jamoa')) ? 9.6 : 8.4;
-    let inclusiveScore = 9.8;
-    let overall = ((clarityScore + techScore + inclusiveScore) / 3).toFixed(1);
+    let techScore = 9.0;
+    let starScore = 9.2;
+    let overall = ((clarityScore + techScore + starScore) / 3).toFixed(1);
 
     return {
+      isPrototype: true,
       overallScore: overall,
       clarityScore: clarityScore.toFixed(1),
       techScore: techScore.toFixed(1),
-      inclusiveScore: inclusiveScore.toFixed(1),
-      feedback: "Javobingiz juda aniq va professional tuzilgan. O'z qulaylik talablaringiz va masofaviy ish tajribangizni aniq ifodalaganingiz suhbatdoshda katta ishonch uyg'otadi.",
-      tip: "Keyingi safar STAR (Situation, Task, Action, Result) metodikasidan foydalanib, natijani aniq raqamlar bilan boyiting."
+      starScore: starScore.toFixed(1),
+      feedback: "Javobingiz professional tuzilgan.",
+      tip: "STAR metodikasidan foydalanib, natijani aniq raqamlar bilan boyiting."
     };
   },
 
@@ -191,89 +180,64 @@ Bog'lanish: ${candidate ? candidate.email : 'aziz.saidov@example.com'}`;
       if (lower.includes('savol')) {
         return 'У меня есть несколько вопросов по поводу условий и задач проекта.';
       }
-      return `${clean} (Переведено на русский язык через AI)`;
+      return `${clean} (Demo Tarjima: RU)`;
     }
 
     // 2. Russian -> Uzbek (RU -> UZ)
     if (sourceLang === 'ru' && targetLang === 'uz') {
       if (lower.includes('здравствуйте') || lower.includes('привет') || lower.includes('добрый день')) {
         if (lower.includes('резюме') || lower.includes('рассмотрели')) {
-          return 'Assalomu alaykum, Azizbek! Biz sizning rezyumengizni ko\'rib chiqdik. Veb-qulaylik (WCAG) va React bo\'yicha tajribangiz bizga juda ma\'qul keldi.';
+          return "Assalomu alaykum! Biz sizning rezyumengizni ko'rib chiqdik va qulay sharoitlar bilan hamkorlik qilishdan mamnunmiz.";
         }
-        return 'Assalomu alaykum! Siz bilan bog\'langanimizdan va suhbatlashayotganimizdan xursandmiz.';
+        return "Assalomu alaykum! Inklyuziv platformaga xush kelibsiz.";
       }
-      if (lower.includes('оборудование') || lower.includes('удаленн') || lower.includes('техник')) {
-        return 'Masofaviy ish joyingiz uchun barcha zarur maxsus texnik jihozlar kompaniya tomonidan to\'liq yetkazib beriladi.';
+      if (lower.includes('собеседовани') || lower.includes('встреч')) {
+        return "Sizni onlayn suhbatga taklif qilamiz. Siz uchun qulay vaqtni belgilaylik.";
       }
-      if (lower.includes('собеседование') || lower.includes('интервью') || lower.includes('встреч')) {
-        return 'Sizni juma kuni soat 15:00 da onlayn texnik suhbatga taklif qilamiz. Ushbu vaqt sizga qulaymi?';
-      }
-      if (lower.includes('отлично') || lower.includes('договорились') || lower.includes('согласуем')) {
-        return 'Ajoyib! Uchrashuvni kelishib olamiz. Masofaviy ishlash uchun barcha zarur qulay sharoitlarni yaratib beramiz.';
+      if (lower.includes('оборудовани') || lower.includes('техник') || lower.includes('ноутбук')) {
+        return "Masofaviy ish joyingiz uchun barcha maxsus texnik jihozlar kompaniya tomonidan to'liq yetkazib beriladi.";
       }
       if (lower.includes('спасибо') || lower.includes('благодар')) {
-        return 'Xabaringiz va qiziqishingiz uchun katta rahmat! Barcha ma\'lumotlarni qabul qildik.';
+        return "Javobingiz va qiziqishingiz uchun katta rahmat.";
       }
-      return `${clean} (AI orqali O'zbek tiliga tarjima qilindi)`;
+      if (lower.includes('график') || lower.includes('время') || lower.includes('удаленн')) {
+        return "Masofaviy ish formati va moslashuvchan ish soatlari tasdiqlandi.";
+      }
+      return `${clean} (Demo Tarjima: UZ)`;
     }
 
     // 3. Uzbek -> English (UZ -> EN)
     if (sourceLang === 'uz' && targetLang === 'en') {
-      if (lower.includes('suhbatga') && lower.includes('tayyor')) {
-        return 'Thank you very much, I am fully prepared for the online interview.';
-      }
-      if (lower.includes('rezyume') && (lower.includes('yubor') || lower.includes('ilova'))) {
-        return 'I have attached my resume and portfolio for your review.';
-      }
-      if (lower.includes('nvda') || lower.includes('ekran o\'quvchi') || lower.includes('qulaylik')) {
-        return 'Confirmation: NVDA screen reader software is configured on my workstation.';
-      }
       if (lower.includes('assalomu alaykum') || lower.includes('salom')) {
-        return 'Hello! Glad to connect and explore career opportunities with your team.';
+        return 'Hello! Pleased to connect with your team on this platform.';
       }
-      if (lower.includes('rahmat') || lower.includes('tashakkur')) {
-        return 'Thank you very much for your feedback, guidance and support.';
+      if (lower.includes('suhbatga') || lower.includes('tayyor')) {
+        return 'Thank you, I am fully prepared for the online interview.';
+      }
+      if (lower.includes('rezyume') || lower.includes('portfolio')) {
+        return 'I have attached my CV and portfolio for your review.';
       }
       if (lower.includes('masofaviy') || lower.includes('remote')) {
-        return 'I am fully set up with assistive tools for remote collaborative work.';
+        return 'I am looking for a full remote position with flexible schedule.';
       }
-      return `${clean} (AI Translated to English)`;
+      return `${clean} (Demo Translation: EN)`;
     }
 
     // 4. English -> Uzbek (EN -> UZ)
     if (sourceLang === 'en' && targetLang === 'uz') {
-      if (lower.includes('hello') || lower.includes('hi ') || lower.includes('welcome')) {
-        if (lower.includes('wcag') || lower.includes('resume') || lower.includes('impressed')) {
-          return 'Salom Azizbek! Biz sizning WCAG 2.1 AA standartlari va veb-ilovalar uchun ekran o\'quvchi optimizatsiyalari bo\'yicha chuqur bilimlaringizdan juda ta\'sirlandik.';
-        }
-        return 'Salom Azizbek! Siz bilan inklyuziv muloqot tarmog\'ida bog\'langanimizdan xursandmiz.';
+      if (lower.includes('hello') || lower.includes('hi')) {
+        return "Salom! Jamoamiz nomidan siz bilan muloqot qilayotganimizdan xursandmiz.";
       }
-      if (lower.includes('interview') || lower.includes('schedule') || lower.includes('invite')) {
-        return 'Sizni juma kuni onlayn texnik suhbatga taklif qilishdan mamnunmiz. Barcha savollarni birgalikda ko\'rib chiqamiz.';
+      if (lower.includes('interview') || lower.includes('invite')) {
+        return "Sizni onlayn texnik suhbatga taklif qilishdan mamnunmiz.";
       }
-      if (lower.includes('equipment') || lower.includes('remote')) {
-        return 'Masofaviy ish joyingiz uchun barcha moslashtirilgan texnik uskunalar kompaniyamiz tomonidan yetkaziladi.';
+      if (lower.includes('equipment') || lower.includes('deliver') || lower.includes('laptop')) {
+        return "Barcha kerakli texnik jihozlar masofaviy ish joyingizga yetkaziladi.";
       }
-      if (lower.includes('thank')) {
-        return 'Xabaringiz va tezkor javobingiz uchun katta rahmat! Aloqada qolamiz.';
-      }
-      return `${clean} (AI orqali O'zbek tiliga tarjima qilindi)`;
+      return `${clean} (Demo Tarjima: UZ)`;
     }
 
-    // 5. Uzbek -> German (UZ -> DE)
-    if (sourceLang === 'uz' && targetLang === 'de') {
-      if (lower.includes('rahmat')) return 'Vielen Dank für Ihre freundliche Unterstützung und Rückmeldung.';
-      if (lower.includes('tayyor')) return 'Vielen Dank, ich bin bereit für das Online-Interview.';
-      return `${clean} (Übersetzt ins Deutsche via AI)`;
-    }
-
-    // 6. Uzbek -> Turkish (UZ -> TR)
-    if (sourceLang === 'uz' && targetLang === 'tr') {
-      if (lower.includes('rahmat')) return 'Geri bildiriminiz ve desteğiniz için çok teşekkür ederim.';
-      if (lower.includes('tayyor')) return 'Çok teşekkürler, çevrimiçi mülakata tamamen hazırım.';
-      return `${clean} (Yapay Zeka ile Türkçe çeviri)`;
-    }
-
-    return `${clean} (${targetLang.toUpperCase()} Translation)`;
+    // Generic Fallback
+    return `${clean} (Demo Tarjima: ${targetLang.toUpperCase()})`;
   }
 };
